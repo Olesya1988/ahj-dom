@@ -15,12 +15,11 @@ export default function getrandomhole() {
     activeHoleNew.classList.add('active-hole');
 
     if (document.querySelector('.background') != null) {
+      // eslint-disable-next-line
       clearInterval(next);
       activeHoleNew.classList.remove('active-hole');
     }
   }
 
   const next = setInterval(() => nextHole(), 800);
-
-  
 }

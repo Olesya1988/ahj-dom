@@ -24,9 +24,10 @@ export default function getgameclick() {
     background.classList.add('background');
     body.appendChild(background);
 
-    document.querySelector('.close').addEventListener('click', function () {
+    document.querySelector('.close').addEventListener('click', () => {
+      // eslint-disable-next-line
       location.reload();
-    })
+    });
   }
 
   holes.forEach((el) => {
