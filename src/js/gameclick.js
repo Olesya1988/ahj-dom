@@ -15,9 +15,18 @@ export default function getgameclick() {
     message.textContent = text;
     body.appendChild(message);
 
+    const close = document.createElement('span');
+    close.classList.add('close');
+    close.innerHTML = '&times;';
+    message.appendChild(close);
+
     const background = document.createElement('div');
     background.classList.add('background');
     body.appendChild(background);
+
+    document.querySelector('.close').addEventListener('click', function () {
+      location.reload();
+    })
   }
 
   holes.forEach((el) => {
@@ -31,21 +40,17 @@ export default function getgameclick() {
       }
 
       if (lostCount === 5) {
-        const text = `Вы проиграли. Набрано баллов: ${luckCount}`;
+        const text = `Вы проиграли. Допущено промахов: ${lostCount}.`;
         createMessage(text);
 
         lostCount = 0;
         luckCount = 0;
-        lost.textContent = 0;
-        luck.textContent = 0;
       } else if (luckCount === 10) {
-        const text = `Победа! Набрано баллов: ${luckCount}`;
+        const text = `Победа! Набрано баллов: ${luckCount}.`;
         createMessage(text);
 
         lostCount = 0;
         luckCount = 0;
-        lost.textContent = 0;
-        luck.textContent = 0;
       }
     });
   });

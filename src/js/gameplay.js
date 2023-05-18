@@ -8,16 +8,19 @@ export default function getrandomhole() {
     let randomIndex = Math.floor(1 + Math.random() * (holes.length - 1));
 
     if (holes.indexOf(activeHole) === randomIndex) {
-      randomIndex = Math.floor(1 + Math.random() * (holes.length - 1));
+      randomIndex = Math.floor(Math.random() * holes.length);
     }
 
     activeHoleNew = holes[randomIndex];
     activeHoleNew.classList.add('active-hole');
+
+    if (document.querySelector('.background') != null) {
+      clearInterval(next);
+      activeHoleNew.classList.remove('active-hole');
+    }
   }
 
   const next = setInterval(() => nextHole(), 800);
 
-  if (document.querySelector('.background') != null) {
-    clearInterval(next);
-  }
+  
 }
